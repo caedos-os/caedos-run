@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/aether.png" width="100%" alt="Aether's control room: a table of seven running processes showing each one's status, leash, last run, tick count and cost. Illustrative data.">
+  <img src=".github/aether.png" width="100%" alt="Aether: An Operating System for AI Agents. The runtime for standing work. Beside it, the control room: a table of seven running processes showing each one's status, leash, last run, tick count and cost. Illustrative data.">
 </p>
 
 # ⣿ Aether
