@@ -9,10 +9,36 @@
 Caedos (said KAY-dos) is the OS your agent works on. Your agent installs **synths** that watch or react to the world (a page, an API, a feed, a database, an event) and then walks away. The synths keep running on Caedos. If nothing changes, they cost nothing. A model is only called when something truly needs reasoning. And nothing goes to your channels or APIs until you allow it.
 
 > [!NOTE]
-> **Caedos is closed source.** This repository holds releases, issues, discussions and blueprints. There's no source code here.
+> **Caedos is closed source.** This repository holds the releases, issues and discussions. There's no source code here.
 
 > [!IMPORTANT]
-> **Not released yet.** Caedos is pre-1.0 and single-user. It's tested on Windows; macOS and Linux aren't tested yet. To hear when the first build is out, click **Watch → Custom → Releases**.
+> **Caedos 0.1.0 is out.** It's pre-1.0 and single-user. The builds for Windows, macOS and Linux are on the [Releases](https://github.com/caedos-os/caedos-run/releases) page, and each one is smoke-tested on its own system before it's published. To hear about new ones, click **Watch → Custom → Releases**.
+
+## Install
+
+Download the package for your computer from the [latest release](https://github.com/caedos-os/caedos-run/releases/latest). Its notes say which file is yours, and how to check a download against the signed checksums.
+
+- **Windows:** unzip it and double-click `caedos.exe`, or run `.\caedos.exe start` in a terminal.
+- **Linux:** unpack it, open a terminal in that folder and run `./caedos start`.
+- **Mac:** download it with `curl`, not a browser. Apple hasn't notarized Caedos yet, so macOS blocks it when a browser downloaded it, but not when `curl` did:
+
+  ```sh
+  curl -fLO https://github.com/caedos-os/caedos-run/releases/latest/download/caedos-darwin-arm64.tar.gz
+  tar -xzf caedos-darwin-arm64.tar.gz && cd caedos-darwin-arm64 && ./caedos start
+  ```
+
+  On a Mac with an Intel processor, use `caedos-darwin-x64` instead.
+
+Caedos prints the control room's address, **http://localhost:2233**, and the line that connects Claude Code, with the right path for your computer:
+
+```sh
+claude mcp add --scope user caedos -- caedos mcp
+```
+
+Any other MCP client: the command `caedos` (its full path if it isn't on your PATH), with the argument `mcp`. To keep Caedos running after you close the terminal, run `caedos service install`: it starts Caedos when you sign in.
+
+> [!NOTE]
+> **The Mac and Windows builds are beta.** The Mac build isn't notarized yet, as above. The Windows build isn't code-signed yet: where Smart App Control is on, Windows blocks it, and a browser download shows a SmartScreen warning.
 
 ## The problem
 
@@ -116,8 +142,10 @@ Already on n8n or Zapier? The courier blueprint hands approved drafts to your we
 
 - Binds to `127.0.0.1` unless you say otherwise, and warns loudly if you do.
 - Secrets are encrypted at rest (AES-256-GCM), resolved only inside the step that uses them, and never written to a trace.
-- No telemetry. The only calls out go to your model provider and the places your processes are told to reach.
+- No telemetry, no license check and no update check. The only calls out go to your model provider, the places your processes are told to reach, and the MCP servers you connect.
+- Allow isn't one of your AI's tools. But an AI that can run commands on your computer can do anything you can, including Allow.
 - **Caedos is single-user and has no authentication yet.** Don't expose it to a network you don't trust.
+- Every release's checksums are signed with the Caedos release key. The release notes show the key and how to check a download.
 
 Found a vulnerability? Email **support@caedos.com** rather than opening a public issue. Reports are acknowledged within 3 business days.
 
@@ -127,20 +155,19 @@ Found a vulnerability? Email **support@caedos.com** rather than opening a public
 
 | Plan | Price | For |
 |---|---|---|
-| **Personal & evaluation** | Free | Running Caedos for yourself, for non-commercial projects, or to evaluate it for your company. Every feature. |
-| **Commercial** | License | Using Caedos for work at a company. Ask at support@caedos.com. |
-| **Hosted** | Not available | Caedos isn't run for you. If that changes, it'll be announced here. |
+| **Free** | $0 | Caedos on your machine, for personal use and for work, at a company of any size. Every feature, and no limit on synths. |
+| **Cloud** | Not built yet | The same Caedos, kept running for you, for work that has to stay up while your computer sleeps. It gets built when enough people ask: tell us at support@caedos.com. |
 
-**What counts as commercial:** using Caedos for a business or for money. For example, running it at a company (even for an internal tool, even at a small startup), running it for a client as a consultant or agency, or using it in a side project that earns revenue. **Not commercial:** personal projects that earn nothing, learning and teaching, and trying Caedos at work to decide whether to buy a license.
+You bring your own model key and your provider bills you directly; Caedos takes no cut.
 
-There's no free tier for small companies: commercial use needs a license at any size. You bring your own model key and your provider bills you directly; Caedos takes no cut. The full license terms will come with the first release.
+**The license:** Caedos is free for personal use and for work under the **Elastic License 2.0**. You may not offer it to others as a hosted or managed service. Each release package includes the full license and `THIRD_PARTY_NOTICES`. Your synths, configs and data are yours.
 
 ## Community
 
-- **Questions and ideas:** [Discussions](../../discussions)
+- **Questions and ideas:** [Discussions](https://github.com/orgs/caedos-os/discussions)
 - **Bugs:** [Issues](../../issues)
 - **Chat:** [Discord](https://discord.gg/fMsYbjvvC9)
 
 ---
 
-© 2026 Ross Walpole. All rights reserved.
+© 2026 Ross Walpole. Free for personal use and for work under the Elastic License 2.0.
