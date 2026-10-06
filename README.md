@@ -12,7 +12,7 @@ Caedos (said KAY-dos) is the OS your agent works on. Your agent installs **synth
 > **Caedos is closed source.** This repository holds the releases, issues and discussions. There's no source code here.
 
 > [!IMPORTANT]
-> **Caedos 0.1.0 is out.** It's pre-1.0 and single-user. The builds for Windows, macOS and Linux are on the [Releases](https://github.com/caedos-os/caedos-run/releases) page, and each one is smoke-tested on its own system before it's published. To hear about new ones, click **Watch → Custom → Releases**.
+> **Caedos is out.** It's pre-1.0 and single-user. The [latest release](https://github.com/caedos-os/caedos-run/releases/latest) has the builds for Windows, macOS and Linux, and each one is smoke-tested on its own system before it's published. To hear about new ones, click **Watch → Custom → Releases**.
 
 ## Install
 
