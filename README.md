@@ -16,7 +16,21 @@ Caedos (said KAY-dos) is the OS your agent works on. Your agent installs **synth
 
 ## Install
 
-Download the package for your computer from the [latest release](https://github.com/caedos-os/caedos-run/releases/latest). Its notes say which file is yours, and how to check a download against the signed checksums.
+**macOS or Linux,** in a terminal:
+
+```sh
+curl -fsSL https://caedos.com/install.sh | sh
+```
+
+**Windows,** in PowerShell:
+
+```powershell
+irm https://caedos.com/install.ps1 | iex
+```
+
+The script downloads the build for your computer from the [latest release](https://github.com/caedos-os/caedos-run/releases/latest), checks it against the release's checksums, and puts `caedos` in `~/.local/bin`, or on Windows in `%LOCALAPPDATA%\Programs\Caedos`, which it adds to your PATH. It needs no admin rights, and changes nothing else. Read it first if you like: [install.sh](https://caedos.com/install.sh), [install.ps1](https://caedos.com/install.ps1). Then run `caedos start`, and [caedos.com/start](https://caedos.com/start) walks you through your first synth.
+
+**Or download it** from the [latest release](https://github.com/caedos-os/caedos-run/releases/latest). Its notes say which file is yours, and how to check a download against the signed checksums.
 
 - **Windows:** unzip it and double-click `caedos.exe`, or run `.\caedos.exe start` in a terminal.
 - **Linux:** unpack it, open a terminal in that folder and run `./caedos start`.
@@ -38,7 +52,7 @@ claude mcp add --scope user caedos -- caedos mcp
 Any other MCP client: the command `caedos` (its full path if it isn't on your PATH), with the argument `mcp`. To keep Caedos running after you close the terminal, run `caedos service install`: it starts Caedos when you sign in.
 
 > [!NOTE]
-> **The Mac and Windows builds are beta.** The Mac build isn't notarized yet, as above. The Windows build isn't code-signed yet: where Smart App Control is on, Windows blocks it, and a browser download shows a SmartScreen warning.
+> **The Mac and Windows builds are beta.** The Mac build isn't notarized yet, as above. The Windows build isn't code-signed yet: where Smart App Control is on, Windows blocks it, and a browser download shows a SmartScreen warning; the PowerShell script doesn't.
 
 ## The problem
 
